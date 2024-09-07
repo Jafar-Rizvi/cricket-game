@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>cricket</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .butt{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(205, 226, 226);
+            cursor: pointer;
+        }
+        img{
+            height: 175px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1> Bat Ball Stump Game</h1>
+    <button class="butt" onclick="  console.log(`you choose bat`);
+    computerChoice=compchoice();
+    yourchoice='Bat';
+    res=generate_result();
+    showresult();
+
+     "> <img src="Cricket-Bat-PNG-Download-Image.png" alt="bat"></button>
+
+
+
+    <button class="butt" onclick=" 
+    computerChoice=compchoice();
+    yourchoice='Ball';
+    res=generate_result();
+    showresult();
+    "> <img src="png-cricket-ball-gray-nicolls-cricket-crown-legend-red-front-450.png" alt="ball"></button>
+
+
+
+
+    <button class="butt" onclick="
+    computerChoice=compchoice();
+    yourchoice='Stumps';
+    res=generate_result();
+    showresult();
+    "> <img src="kindpng_1515287.png" alt="stumps"></button>
+
+
+
+
+<h2 id="yc"></h2>
+<h2 id="cc"></h2>
+<h2 id="r"></h2>
+<h2 id="scr"></h2>
+
+<button onclick="score.you=0;
+score.computer=0;
+score.tied=0;
+yourchoice='nill';
+showresult();">Reset score</button>
+
+
+
+
+         <script>
+            let yourchoice;
+            let res;
+              let score={
+                you:0,
+                computer:0,
+                tied:0,
+            };
+            function generate_result(){
+                if(yourchoice=='Bat')
+                {
+                    if(computerChoice=='Ball'){
+                        score.you++;
+                    return 'you win';}
+                else if(computerChoice=='Bat'){
+                    score.tied++;
+                return 'match tied';}
+            else {
+                score.computer++
+            return 'you lost'
+                
+                }
+            }
+                if(yourchoice=='Ball')
+                {
+                    if(computerChoice=='Stumps'){
+                        score.you++;
+                    return 'you win';}
+                else if(computerChoice=='Ball'){
+                    score.tied++;
+                return 'match tied';}
+            else {
+                score.computer++;
+            return 'you lost'
+            }  
+                }
+                if(yourchoice=='Stumps')
+                {
+                    if(computerChoice=='Bat'){
+                        score.you++;
+                    return 'you win';}
+                else if(computerChoice=='Stumps'){
+                    score.tied++;
+                return 'match tied';}
+            else {
+                score.computer++;
+            return 'you lost'}
+                
+                }
+
+            }
+
+
+
+
+
+            function showresult()
+            { if(yourchoice!='nill'){
+               document.querySelector('#yc').innerText=`You have Chosen ${yourchoice}`;
+               document.querySelector('#cc').innerText=`computer has Chosen ${computerChoice}`;
+               document.querySelector('#r').innerText=`result: ${res}`;
+            }
+            else{
+                document.querySelector('#yc').innerText=``;
+               document.querySelector('#cc').innerText=``;
+               document.querySelector('#r').innerText=``;
+
+            }
+               document.querySelector('#scr').innerText=`Score: ${JSON.stringify(score)}`;
+
+            }
+
+
+
+
+
+            function compchoice(){
+                var randomNumber=Math.random()*3;
+    if(randomNumber<=1){
+    var computersChoice='Bat';
+    }
+    else if(randomNumber<=2){
+        var computersChoice='Ball';
+    }
+    else{
+        var computersChoice='Stumps';
+    }
+    return computersChoice;
+            }
+            
+           
+
+
+
+         </script>
+
+</body>
+</html>
